@@ -1,5 +1,6 @@
 ﻿using System.Data.Common;
 using System.Security;
+using System.Security.Principal;
 using Komplettering;
 // SHIFT + ALT + F = FORMATERING
 
@@ -64,14 +65,8 @@ while (!success) //vanlig tryparse loop
     success = int.TryParse(Console.ReadLine(), out user.age); //din ålder blir vad du skriver in.
     Methods.Loading();
 
-    if (!success)
-    {
-        Console.WriteLine("Sluta larva dig! Skriv en SIFFRA, inte en STRING!!!");
-        Methods.Loading();
-        Thread.Sleep(2000);
-        Methods.UserChoiceError(3);
-    }
-    else if (user.age < 18)
+
+    if (user.age < 18) //om du är yngre än 18 
     {
         Console.WriteLine($"Sakta i backarna där, {user.name}. Man måste vara över 18 för att konsumera alkohol.");
         Thread.Sleep(4000);
@@ -92,18 +87,61 @@ while (!success) //vanlig tryparse loop
             Thread.Sleep(2000);
             int[] array = [2]; // en crash med flit.
             int crashOut = array[2]; //en crash med flit.
-        } else if (choice == 2)
+        }
+        else if (choice == 2)
         {
             Console.WriteLine($"Du kan nu göra allting som en 18-åring kan.");
             Thread.Sleep(2000);
             Console.WriteLine("Tyvär så kostade det 500 kr, så du är nu pank. Nu heter du även McLovin.");
             user.name = "McLovin";
             user.age = 18;
+            user.cash -= 500;
+            Thread.Sleep(4000);
         }
-
+        Console.Clear();
     }
+    else if (user.age > 99) // du är för gammal
+    {
+        Console.WriteLine("du dör av ålder");
+        Methods.Loading();
+        Console.WriteLine("som straff så kommer programmet försöka att plocka ett värde ur en array från ett index som inte finns.");
+        Thread.Sleep(5000);
+        Console.WriteLine("som du kanske vet så är detta inte bra.");
+        Thread.Sleep(2000);
+        int[] array = [2]; // en crash med flit.
+        int crashOut = array[2]; //en crash med flit.
+    }
+    else //du har en bra ålder. 18 - 99
+    {
+        Console.WriteLine($"Schysst {user.name}, du är {user.age} år gammal.");
+        Thread.Sleep(3000);
+    }
+}
+Console.Clear();
+Methods.Loading();
+Console.WriteLine("Hur ofta tränar du? (detta påverkar din styrka):");
+Console.WriteLine("1. Vad är träning?"); // du dör för att dina muskler aldrig har upplevt någonting (inklusive ditt hjärta)
+Console.WriteLine("2. Jag har hört talas om det."); //du fär låg styrka
+Console.WriteLine("3. ca 1 gång i veckan."); //normal styrka
+Console.WriteLine("4. ca 3 gånger i veckan."); //perfekt styrka
+Console.WriteLine("5. varje dag eller flera gånger varje dag."); // du dör eftersom du har tränta sönder dig själv.
+Methods.TryParse_MultiChoice(choiceCount = 5, choice);
 
+Console.Clear();
 
+if (choice == 1)
+{
+    Console.WriteLine("Du dör pågrund av att du är för svag");
+    Thread.Sleep(2000);
+    Console.WriteLine("Som straff så kommer programmet försöka att plocka ett värde ur en array från ett index som inte finns.");
+    Thread.Sleep(5000);
+    Console.WriteLine("Som du kanske vet så är detta inte bra.");
+    Thread.Sleep(2000);
+    int[] array = [2]; // en crash med flit.
+    int crashOut = array[2]; //en crash med flit.
+} else if (choice == 2)
+{
+    
 }
 
 
