@@ -1,4 +1,5 @@
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Komplettering;
 
@@ -11,8 +12,8 @@ public class Character // du
     [
         ("Kniv", 0), //index
         ("Nycklar", 0),
-        ("Protein bar", 0),
-        ("Steroider", 0)
+        ("Protein bar", 5),
+        ("Steroider", 3)
     ]; 
     public float cash = 500;
 }

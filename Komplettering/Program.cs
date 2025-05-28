@@ -12,12 +12,6 @@ int choiceCount; //måste vara deklarerad innan.
 int choice = 0;
 int errorLines = 0;
 
-List<string> items =
-[
-    "Kniv",
-    "Nycklar",
-
-];
 
 Console.WriteLine("Du vaknar upp på en lergi stig med en kraftig bakfylla.\nSom tur så är du smart och har vätske ersättning i din väska.\n");
 Methods.Loading();
@@ -61,7 +55,7 @@ while (user.name.Length > 14 || user.name == "") //loopen fortsätter så läge 
     {
         Console.WriteLine("Oj, är du säker på att det är ett riktigt namn, det är ganska långt.");
         Thread.Sleep(4000);
-        Methods.UserChoiceError(3);
+        Methods.RemoveLines(3);
     }
 }
 Console.Clear();
@@ -183,6 +177,50 @@ Methods.Loading();
 Console.WriteLine("Tryck på enter när du är redo att gå vidare.");
 Console.ReadLine();
 Console.Clear();
+Console.WriteLine("Målet med detta spel är att försöka ta sig hem utan att dö");
+Methods.Loading();
+Console.WriteLine("Tryck på enter när du är redo att gå vidar.");
+Console.ReadLine();
+Console.Clear();
+
+Methods.Loading();
+Console.Clear();
+Console.WriteLine($"På vägen hem hittar du en cool kniv. Väljer du att ta upp den?");
+Methods.Loading();
+Methods.RemoveLines(1);
+Console.WriteLine($"1. Ja");
+Console.WriteLine($"2. Nej");
+choice = Methods.TryParse_MultiChoice(choiceCount = 2, choice);
+Methods.Loading();
+Console.Clear();
+
+if (choice == 1)
+{
+    Console.WriteLine("Smart! Man vet aldrig när man kan behöva en Kniv");
+    user.inventory[0] = (user.inventory[0].item, 1);  //kniv count = 1.
+    Thread.Sleep(2000);
+}
+else if (choice == 2)
+{
+    Console.WriteLine("Oj, tänk om du någongång behöver en kniv.");
+    Thread.Sleep(2000);
+    Methods.Loading();
+    Methods.RemoveLines(1);
+    Console.WriteLine($"{user.name}, är du verkligen säker på att du inte vill ha kniven?");
+    Console.WriteLine("1. okej jag tar den");
+    Console.WriteLine("2. Nej jag avstår");
+    choice = Methods.TryParse_MultiChoice(choiceCount = 2, choice);
+    if (choice == 1) // du får en till chans du dör om du inte tar upp kniven.
+    {
+        Console.WriteLine("Smart! Man vet aldrig när man kan behöva en Kniv");
+        user.inventory[0] = (user.inventory[0].item, 1);  //kniv count = 1.
+        Thread.Sleep(2000);
+    }
+    else if (choice == 2)
+    {
+
+    }
+}
 
 
 
