@@ -15,6 +15,7 @@ int errorLines = 0;
 
 Console.WriteLine("Du vaknar upp på en lergi stig med en kraftig bakfylla.\nSom tur så är du smart och har vätske ersättning i din väska.\n");
 Methods.Loading();
+Methods.RemoveLines(1);
 Thread.Sleep(2000); // 2 sekunder vänta
 Console.WriteLine("Väljer du att dricka Vätskeersättningen? \nSkriv det alternativ som du väljer och tryck sedan på enter.");
 Console.WriteLine("1. Nej, usch.");
@@ -40,6 +41,7 @@ else if (choice == 2)
     Console.WriteLine("Det var så uppfriskande att du nu kommer ihåg dina stats och personuppgifter.");
     Thread.Sleep(1000);
     Methods.Loading();
+    Methods.RemoveLines(1);
     Thread.Sleep(1000);  //min mamma tyckte det gick för snabbt.
 }
 
@@ -51,6 +53,7 @@ while (user.name.Length > 14 || user.name == "") //loopen fortsätter så läge 
 {
     user.name = Console.ReadLine(); //user namn blir lika med user input.
     Methods.Loading();
+    Methods.RemoveLines(1);
     if (user.name.Length > 14)
     {
         Console.WriteLine("Oj, är du säker på att det är ett riktigt namn, det är ganska långt.");
@@ -67,6 +70,7 @@ while (!success) //vanlig tryparse loop
 
     success = int.TryParse(Console.ReadLine(), out user.age); //din ålder blir vad du skriver in.
     Methods.Loading();
+    Methods.RemoveLines(1);
 
 
     if (user.age < 18) //om du är yngre än 18 
@@ -107,6 +111,7 @@ while (!success) //vanlig tryparse loop
     {
         Console.WriteLine("du dör av ålder");
         Methods.Loading();
+        Methods.RemoveLines(1);
         Console.WriteLine("som straff så kommer programmet försöka att plocka ett värde ur en array från ett index som inte finns.");
         Thread.Sleep(5000);
         Console.WriteLine("som du kanske vet så är detta inte bra.");
@@ -122,6 +127,7 @@ while (!success) //vanlig tryparse loop
 }
 Console.Clear();
 Methods.Loading();
+Methods.RemoveLines(1);
 Console.WriteLine("Hur ofta tränar du? (detta påverkar din styrka):");
 Console.WriteLine("1. Vad är träning?"); // du dör för att dina muskler aldrig har upplevt någonting (inklusive ditt hjärta)
 Console.WriteLine("2. Jag har hört talas om det."); //du fär låg styrka
@@ -169,29 +175,35 @@ else if (choice == 5)
 Console.Clear();
 
 Methods.Loading();
+Methods.RemoveLines(1);
 
 Methods.Stats_2(user);
 Methods.Loading();
+Methods.RemoveLines(1);
 Console.WriteLine($"{user.name}, Såhär ser det ut när när dina stats visas upp.");
 Methods.Loading();
+Methods.RemoveLines(1);
 Console.WriteLine("Tryck på enter när du är redo att gå vidare.");
 Console.ReadLine();
 Console.Clear();
 Console.WriteLine("Målet med detta spel är att försöka ta sig hem utan att dö");
 Methods.Loading();
+Methods.RemoveLines(1);
 Console.WriteLine("Tryck på enter när du är redo att gå vidar.");
 Console.ReadLine();
 Console.Clear();
 
 Methods.Loading();
-Console.Clear();
+Methods.RemoveLines(1);
 Console.WriteLine($"På vägen hem hittar du en cool kniv. Väljer du att ta upp den?");
 Methods.Loading();
+Methods.RemoveLines(1);
 Methods.RemoveLines(1);
 Console.WriteLine($"1. Ja");
 Console.WriteLine($"2. Nej");
 choice = Methods.TryParse_MultiChoice(choiceCount = 2, choice);
 Methods.Loading();
+Methods.RemoveLines(1);
 Console.Clear();
 
 if (choice == 1)
@@ -206,10 +218,15 @@ else if (choice == 2)
     Thread.Sleep(2000);
     Methods.Loading();
     Methods.RemoveLines(1);
+    Methods.RemoveLines(1);
     Console.WriteLine($"{user.name}, är du verkligen säker på att du inte vill ha kniven?");
     Console.WriteLine("1. okej jag tar den");
     Console.WriteLine("2. Nej jag avstår");
     choice = Methods.TryParse_MultiChoice(choiceCount = 2, choice);
+    Methods.Loading();
+    Methods.RemoveLines(1);
+    Console.Clear();
+
     if (choice == 1) // du får en till chans du dör om du inte tar upp kniven.
     {
         Console.WriteLine("Smart! Man vet aldrig när man kan behöva en Kniv");
@@ -218,7 +235,7 @@ else if (choice == 2)
     }
     else if (choice == 2)
     {
-
+        Console.WriteLine("oj nu har du ingen kniv, vi får hoppas på att det inte leder till någontin dåligt...");
     }
 }
 
