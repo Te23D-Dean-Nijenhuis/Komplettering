@@ -100,6 +100,8 @@ while (!success) //vanlig tryparse loop
             Console.WriteLine($"Du kan nu göra allting som en 18-åring kan.");
             Thread.Sleep(2000);
             Console.WriteLine("Tyvär så kostade det 500 kr, så du är nu pank. Nu heter du även McLovin.");
+            Thread.Sleep(3000);
+            Console.WriteLine("som tur så har pengar ingen funktion eftersom programerings tiden är kort.");
             user.name = "McLovin"; //ditt namn är nu McLovin. 
             user.age = 18;         //du är 18 år.
             user.cash -= 500;      //500 riksdaler försvinner.
@@ -233,10 +235,61 @@ else if (choice == 2)
         user.inventory[0] = (user.inventory[0].item, 1);  //kniv count = 1.
         Thread.Sleep(2000);
     }
-    else if (choice == 2)
+    else if (choice == 2) // du väljer att inte ta upp kniven.
     {
         Console.WriteLine("oj nu har du ingen kniv, vi får hoppas på att det inte leder till någontin dåligt...");
+        Thread.Sleep(5000);
     }
+}
+Console.Clear();
+
+Methods.Loading();
+Methods.RemoveLines(1);
+
+Console.WriteLine("Du stöter på en ond man utanför ditt hus. Han har dina nycklar");
+Thread.Sleep(3000);
+Console.WriteLine("För att komma in i ditt hus måste du besegra honom.");
+Thread.Sleep(3000);
+Methods.Loading();
+
+Console.WriteLine("väljer du att fajta honom?");
+Console.WriteLine("1. Ja jag måste ju.");
+Console.WriteLine("2. Nej jag vill förlora spelet.");
+
+choice = Methods.TryParse_MultiChoice(choiceCount = 2, choice);
+
+Console.Clear();
+if (choice == 1) //du har valt att fajta honom. (för detta kommer kniv och styrka >= 50 behövas.)
+{
+    if (user.inventory[0].count > 0 && user.strength >= 50) //om du har kniv och är starkare ämn 50
+    {
+        Console.WriteLine("Grattis du vann spelet, eftersom du var tillräckligt stark och hade en kniv.");
+        Methods.Loading();
+        Console.WriteLine("tryck enter för att stänga av.");
+    }
+    else // du förlorar fajten.
+    {
+        Console.WriteLine("du är antingen för svag eller har ingen kniv, programmeraren hade inte tid att skriva för båda scenarion.");
+        Thread.Sleep(4000);
+        Console.WriteLine("Som straff så kommer programmet försöka att plocka ett värde ur en array från ett index som inte finns.");
+        Thread.Sleep(5000);
+        Console.WriteLine("Som du kanske vet så är detta inte bra.");
+        Thread.Sleep(2000);
+        int[] array = [2]; // en crash med flit.
+        int crashOut = array[2]; //en crash med flit.
+    }
+}
+else if (choice == 2)
+{
+    Console.WriteLine("Nästa gång så fajtar du, förstår du?");
+    Thread.Sleep(4000);
+    Console.WriteLine("Som straff så kommer programmet försöka att plocka ett värde ur en array från ett index som inte finns.");
+    Thread.Sleep(5000);
+    Console.WriteLine("Som du kanske vet så är detta inte bra.");
+    Thread.Sleep(2000);
+    int[] array = [2]; // en crash med flit.
+    int crashOut = array[2]; //en crash med flit.
+
 }
 
 
