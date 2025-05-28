@@ -12,6 +12,13 @@ int choiceCount; //måste vara deklarerad innan.
 int choice = 0;
 int errorLines = 0;
 
+List<string> items =
+[
+    "Kniv",
+    "Nycklar",
+
+];
+
 Console.WriteLine("Du vaknar upp på en lergi stig med en kraftig bakfylla.\nSom tur så är du smart och har vätske ersättning i din väska.\n");
 Methods.Loading();
 Thread.Sleep(2000); // 2 sekunder vänta
@@ -37,7 +44,9 @@ else if (choice == 2)
     Console.WriteLine("Bra! Riktigt smart val.");
     Thread.Sleep(2000);
     Console.WriteLine("Det var så uppfriskande att du nu kommer ihåg dina stats och personuppgifter.");
+    Thread.Sleep(1000);
     Methods.Loading();
+    Thread.Sleep(1000);  //min mamma tyckte det gick för snabbt.
 }
 
 Console.Clear();
@@ -93,9 +102,9 @@ while (!success) //vanlig tryparse loop
             Console.WriteLine($"Du kan nu göra allting som en 18-åring kan.");
             Thread.Sleep(2000);
             Console.WriteLine("Tyvär så kostade det 500 kr, så du är nu pank. Nu heter du även McLovin.");
-            user.name = "McLovin";
-            user.age = 18;
-            user.cash -= 500;
+            user.name = "McLovin"; //ditt namn är nu McLovin. 
+            user.age = 18;         //du är 18 år.
+            user.cash -= 500;      //500 riksdaler försvinner.
             Thread.Sleep(4000);
         }
         Console.Clear();
@@ -125,7 +134,7 @@ Console.WriteLine("2. Jag har hört talas om det."); //du fär låg styrka
 Console.WriteLine("3. ca 1 gång i veckan."); //normal styrka
 Console.WriteLine("4. ca 3 gånger i veckan."); //perfekt styrka
 Console.WriteLine("5. varje dag eller flera gånger varje dag."); // du dör eftersom du har tränta sönder dig själv.
-Methods.TryParse_MultiChoice(choiceCount = 5, choice);
+choice = Methods.TryParse_MultiChoice(choiceCount = 5, choice);
 
 Console.Clear();
 
@@ -139,10 +148,41 @@ if (choice == 1)
     Thread.Sleep(2000);
     int[] array = [2]; // en crash med flit.
     int crashOut = array[2]; //en crash med flit.
-} else if (choice == 2)
-{
-    
 }
+else if (choice == 2)
+{
+    user.strength = 10;
+}
+else if (choice == 3)
+{
+    user.strength = 50;
+}
+else if (choice == 4)
+{
+    user.strength = 100;
+}
+else if (choice == 5)
+{
+    Console.WriteLine("Du dör pågrund av att alla dina muskler har gått sönder och för att du tar steroider.");
+    Thread.Sleep(4000);
+    Console.WriteLine("Som straff så kommer programmet försöka att plocka ett värde ur en array från ett index som inte finns.");
+    Thread.Sleep(5000);
+    Console.WriteLine("Som du kanske vet så är detta inte bra.");
+    Thread.Sleep(2000);
+    int[] array = [2]; // en crash med flit.
+    int crashOut = array[2]; //en crash med flit.
+}
+Console.Clear();
+
+Methods.Loading();
+
+Methods.Stats_2(user);
+Methods.Loading();
+Console.WriteLine($"{user.name}, Såhär ser det ut när när dina stats visas upp.");
+Methods.Loading();
+Console.WriteLine("Tryck på enter när du är redo att gå vidare.");
+Console.ReadLine();
+Console.Clear();
 
 
 

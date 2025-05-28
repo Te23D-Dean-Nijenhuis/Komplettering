@@ -6,7 +6,13 @@ public class Character // du
 {
     public string name = ""; // ditt namn
     public int age; //din ålder
-    public float strenght; // din styrka
-    public List<(int id, int count)> inventory = []; // ditt inventory, int representerar ett id till en annan lista som innehåller items. och count är som det låter.
+    public float strength; // din styrka
+    public List<(string item, int count)> inventory = // ditt inventory, string är vilket item. och count är som det låter.
+    [
+        ("Kniv", 0), //index
+        ("Nycklar", 0),
+        ("Protein bar", 0),
+        ("Steroider", 0)
+    ]; 
     public float cash = 500;
 }
